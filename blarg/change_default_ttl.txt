@@ -1,0 +1,3 @@
+# change default TTL on Linux:
+--------------------------------------------
+echo 65 | sudo tee /proc/sys/net/ipv4/ip_default_ttl
