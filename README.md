@@ -1,3 +1,3 @@
 # shit
 
-random stuff of varying quality
+random stuff of varying quality and low importance
