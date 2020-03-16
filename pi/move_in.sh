@@ -9,7 +9,7 @@ sudo apt update
 sudo apt upgrade
 sudo apt install mksh python3-pip rsync curl git \
     htop neofetch git build-essential pv dvtm \
-    tree ranger neovim less mandoc openvpn
+    tree ranger neovim less mandoc man openvpn
 
 sudo chsh -s $(which mksh) $USER
 
@@ -40,6 +40,7 @@ export PAGER=less
 EOF
 
 cat >.kshrc <<"EOF"
+set -o vi
 alias l=ls
 alias ll='ls -l'
 alias l1='ls -1'
@@ -50,4 +51,5 @@ alias mv='mv -ifv'
 alias rm='rm -ifv'
 alias cp='cp -ifv'
 alias v=$EDITOR
+alias rsync='rsync -rtvuhz --progress --delete --partial'
 EOF
