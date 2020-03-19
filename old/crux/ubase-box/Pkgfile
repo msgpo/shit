@@ -1,0 +1,22 @@
+# Description: unporable suckless core-utils, in busybox form
+# URL: http://suckless.org/core/ubase
+# Maintainer: Mitch Weaver, mitchweaver at protonmail dot com
+
+name=ubase-box
+version=git
+release=1
+source=()
+build() {
+    cd $PKGMK_SOURCE_DIR
+    if [ -d ubase ] ; then
+        rm -r ubase
+    fi
+    git clone git://git.suckless.org/ubase
+    cd ubase
+
+    mkdir -p $PKG/usr/bin
+    make CFLAGS="$CFLAGS -static" \
+         LDFLAGS="$LDFLAGS -static" \
+         ubase-box
+    cp -f ubase-box $PKG/usr/bin
+}

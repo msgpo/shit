@@ -1,0 +1,16 @@
+# Description: fake keyboard/mouse input, window management, and more
+# URL:         http://www.semicomplete.com/projects/xdotool/
+# Maintainer:  Mitch Weaver, mike at mikejsavage dot co dot uk
+# Depends on:  xorg-server
+
+name=xdotool
+version=3.20160805.1
+release=1
+source=(https://github.com/jordansissel/xdotool/archive/v$version.tar.gz)
+
+build() {
+	cd $name-$version
+
+	make 
+	make DESTDIR=$PKG install
+}

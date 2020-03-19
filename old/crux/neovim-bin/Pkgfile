@@ -1,0 +1,17 @@
+# Description : Vim-fork focused on extensibility and usability (Binary)
+# URL         : https://github.com/neovim/neovim
+# Maintainer  : Mitch Weaver, mitchweaver at protonmail dot com
+
+name=neovim-bin
+version=0.5.0
+release=1
+source=(https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage)
+
+build() {
+    mkdir -p $PKG/usr/bin
+    cp -f nvim.appimage $PKG/usr/bin/nvim
+    chmod +x $PKG/usr/bin/nvim
+
+    # Run this if you have already uninstalled regular vim
+    # ln -sf /usr/bin/nvim /usr/bin/vim
+}

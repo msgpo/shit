@@ -1,0 +1,15 @@
+# Description: scrot - SCReen shOT
+# URL: https://github.com/dreamer/scrot      
+# Maintainer:  Mitch Weaver, mitchweaver at protonmail dot com
+
+name=scrot
+version=0.8
+release=1
+source=(https://github.com/dreamer/$name/archive/$name-$version.tar.gz)
+
+build() {
+  cd $name-$name-$version # github is a pain
+  ./configure --prefix=/usr
+  make
+  make DESTDIR=$PKG install
+}

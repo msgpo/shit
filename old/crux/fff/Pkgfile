@@ -1,0 +1,16 @@
+# Description: Fucking Fast File-Manager
+# URL: https://github.com/dylanaraps/fff
+# Maintainer:  Mitch Weaver, mitchweaver at protonmail dot com
+# Depends on: bash
+
+name=fff
+version=git
+release=1
+source=()
+
+build() {
+    [ -d $name ] && rm -rf fff
+    git clone https://github.com/dylanaraps/$name
+    cd $name
+    make DESTDIR=$PKG install
+}

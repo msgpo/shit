@@ -1,0 +1,18 @@
+# Description: blessings library for python3
+# URL: https://github.com/erikrose/blessings
+# Maintainer:  Mitch Weaver, mitchweaver at protonmail dot com
+# Depends on: python3 python3-setuptools
+
+name=python3-blessings
+version=1.7
+release=1
+source=(https://github.com/erikrose/blessings/archive/${version}.tar.gz)
+
+build() {
+    mkdir $PKG/usr
+
+    cd blessings-$version
+
+    python3 ./setup.py build
+    python3 ./setup.py install --root=$PKG
+}

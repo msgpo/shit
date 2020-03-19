@@ -1,0 +1,15 @@
+# Description: Brave - Privacy Respecting Browser
+# URL: http://brave-browser.readthedocs.io
+# Maintainer: 
+# Depends on: alsa-lib,gtk3,xorg-libxtst,nss,cups,dbus-glib,gperf,gtk,gtk3,libevent,libexif,libgcrypt,ninja,nodejs,nss,pciutils,speech-dispatcher,xorg-libxscrnsaver,xorg-libxt,yasm,unzip
+name=brave
+version=1.5.47
+release=1
+source=https://github.com/brave/brave-browser/releases/download/v$version/brave-v$version-linux-x64.zip
+build() {
+    mkdir -p $PKG/opt/brave
+    cd ..
+    cp -rf src/* $PKG/opt/brave
+    chmod +x $PKG/opt/brave/brave
+    ln -sf /opt/brave/brave /usr/bin/brave
+}

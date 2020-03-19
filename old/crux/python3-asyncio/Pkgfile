@@ -1,0 +1,18 @@
+# Description: asyncio library for python3
+# URL: https://pypi.org/project/asyncio
+# Maintainer:  Mitch Weaver, mitchweaver at protonmail dot com
+# Depends on: python3 python3-setuptools
+
+name=python3-asyncio
+version=3.4.3
+release=1
+source=(https://files.pythonhosted.org/packages/da/54/054bafaf2c0fb8473d423743e191fcdf49b2c1fd5e9af3524efbe097bafd/asyncio-$version.tar.gz)
+
+build() {
+    mkdir $PKG/usr
+
+    cd asyncio-$version
+
+    python3 ./setup.py build
+    python3 ./setup.py install --root=$PKG
+}

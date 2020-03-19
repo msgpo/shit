@@ -1,0 +1,14 @@
+# Description: sselp simple x selection printer
+# URL: http://suckless.org/x/sselp
+# Maintainer:  Mitch Weaver, mitchweaver at protonmail dot com
+
+name=sselp
+version=0.2
+release=1
+source=(http://dl.suckless.org/tools/sselp-0.2.tar.gz)
+
+build() {
+  cd $name-$version
+  make
+  make DESTDIR=$PKG install
+}

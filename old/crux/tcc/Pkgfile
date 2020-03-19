@@ -1,0 +1,15 @@
+# Description: Tiny C Compiler
+# URL: http://bellard.org/tcc
+# Maintainer:  Mitch Weaver, mitchweaver at protonmail dot com
+
+name=tcc
+version=0.9.27
+release=1
+source=(https://download.savannah.gnu.org/releases/tinycc/$name-$version.tar.bz2)
+
+build() {
+    cd $name-$version
+    ./configure --prefix=/usr
+    make
+    make DESTDIR=$PKG install
+}

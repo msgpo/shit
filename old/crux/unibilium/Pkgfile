@@ -1,0 +1,15 @@
+# Description : A terminfo parsing library
+# URL         : https://github.com/mauke/unibilium
+# Maintainer  : Mitch Weaver, mitchweaver at protonmail dot com
+
+name=unibilium
+version=2.0.0
+release=2
+source=("https://github.com/neovim/$name/archive/v$version.tar.gz")
+
+build() {
+    cd $name-$version
+
+    make
+    make DESTDIR=$PKG PREFIX=/usr install
+}

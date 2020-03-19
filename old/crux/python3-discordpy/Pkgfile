@@ -1,0 +1,18 @@
+# Description: discord.py library for python3
+# URL: https://github.com/Rapptz/discord.py
+# Maintainer:  Mitch Weaver, mitchweaver at protonmail dot com
+# Depends on: python3 python3-setuptools
+
+name=python3-discordpy
+version=1.2.2
+release=1
+source=(https://github.com/Rapptz/discord.py/archive/v${version}.tar.gz)
+
+build() {
+    mkdir $PKG/usr
+
+    cd discord.py-$version
+
+    python3 ./setup.py build
+    python3 ./setup.py install --root=$PKG
+}

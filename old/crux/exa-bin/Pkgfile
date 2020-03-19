@@ -1,0 +1,17 @@
+# Description: a modern ls replacement (binary)
+# URL: http://the.exa.website
+# Maintainer:  Mitch Weaver, mitchweaver at protonmail dot com
+
+name=exa-bin
+version=0.9.0
+release=1
+source=(https://github.com/ogham/exa/releases/download/v${version}/exa-linux-x86_64-${version}.zip)
+
+build() {
+    mkdir -p $PKG/usr/bin
+    cp -f exa-linux-x86_64 $PKG/usr/bin/exa
+
+    # get man page
+	mkdir -p $PKG/usr/share/man/man1
+	wget https://raw.githubusercontent.com/ogham/exa/master/contrib/man/exa.1 -O $PKG/usr/share/man/man1/exa.1
+}

@@ -1,0 +1,15 @@
+# Description: mpc-like controller for mpv
+# URL: http://github.com/lwilletts/mpvc
+# Maintainer:  Mitch Weaver, mitchweaver at protonmail dot com
+
+name=mpvc
+version=git
+release=1
+source=()
+
+build() {
+    [ -d $name ] && rm -rf mpvc
+    git clone http://github.com/lwilletts/$name
+    cd $name
+    make DESTDIR=$PKG PREFIX=/usr install
+}

@@ -1,0 +1,16 @@
+# Description: cmdline system benchmarker
+# URL: http://github.com/akopytov/sysbench
+# Maintainer:  Mitch Weaver, mitchweaver at protonmail dot com
+
+name=sysbench
+version=1.0.17
+release=1
+source=(https://github.com/akopytov/sysbench/archive/$version.tar.gz)
+
+build() {
+    cd $name-$version
+    ./autogen.sh
+    ./configure
+    make
+    make DESTDIR=$PKG install
+}

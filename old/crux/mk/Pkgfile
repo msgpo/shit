@@ -1,0 +1,21 @@
+# Description: plan9 mk
+# URL: https://9fans.github.io/plan9port/unix/
+# Maintainer:  Mitch Weaver, mitchweaver at protonmail dot com
+
+name=mk
+version=1.0
+release=1
+source=(https://9fans.github.io/plan9port/unix/mk-with-libs.tgz 
+    regcomp.patch Makefile.patch)
+
+build() {
+    mkdir ${PKG}/usr
+
+    cd ${name}
+
+    patch -p0 -i ${SRC}/regcomp.patch
+    patch -p0 -i ${SRC}/Makefile.patch
+
+    make PREFIX=$PKG/usr
+    make PREFIX=$PKG/usr install
+}

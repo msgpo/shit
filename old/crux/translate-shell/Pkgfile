@@ -1,0 +1,14 @@
+# Description: cmd-line translate too
+# URL: http://github.com/soimort/translate-shell
+# Maintainer:  Mitch Weaver, mitchweaver at protonmail dot com
+
+name=translate-shell
+version=0.9.6.10
+release=1
+source=(https://github.com/soimort/translate-shell/archive/v${version}.tar.gz)
+
+build() {
+    cd $name-$version
+    make
+    make DESTDIR=$PKG install
+}

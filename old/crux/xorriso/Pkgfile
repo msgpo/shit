@@ -1,0 +1,15 @@
+# Description: GNU iso creation tool
+# URL: https://www.gnu.org/software/xorriso
+# Maintainer: Mitch Weaver, mitchweaver at protonmail dot com
+
+name=xorriso
+version=1.5.0
+release=1
+source=(https://www.gnu.org/software/xorriso/xorriso-${version}.tar.gz)
+
+build() {
+    cd $name-$version
+    ./configure
+    make
+    make DESTDIR=$PKG install
+}

@@ -1,0 +1,14 @@
+--- Makefile.orig	2019-06-22 22:37:54.992430000 +0000
++++ Makefile	2019-06-22 22:39:11.068685380 +0000
+@@ -1,8 +1,8 @@
+ all:
+-	for i in libutf libfmt libbio libregexp mk; do (cd $$i; make); done; ls -l mk/mk
++	for i in libutf libfmt libbio libregexp mk; do (cd $$i; make PREFIX=$(PREFIX)); done; ls -l mk/mk
+ 
+ clean:
+-	for i in libutf libfmt libbio libregexp mk; do (cd $$i; make clean); done
++	for i in libutf libfmt libbio libregexp mk; do (cd $$i; make PREFIX=$(PREFIX) clean); done
+ 
+ install:
+-	for i in libutf libfmt libbio libregexp mk; do (cd $$i; make install); done
++	for i in libutf libfmt libbio libregexp mk; do (cd $$i; make PREFIX=$(PREFIX) install); done

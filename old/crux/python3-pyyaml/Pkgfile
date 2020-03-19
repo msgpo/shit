@@ -1,0 +1,18 @@
+# Description: pyyaml library for python3
+# URL: https://pyyaml.org/pyyaml
+# Maintainer:  Mitch Weaver, mitchweaver at protonmail dot com
+# Depends on: python3 python3-setuptools
+
+name=python3-pyyaml
+version=5.1
+release=1
+source=(https://pyyaml.org/download/pyyaml/PyYAML-${version}.tar.gz)
+
+build() {
+    mkdir $PKG/usr
+
+    cd PyYAML-$version
+
+    python3 ./setup.py build
+    python3 ./setup.py install --root=$PKG
+}

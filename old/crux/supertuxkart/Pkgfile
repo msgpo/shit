@@ -1,0 +1,17 @@
+# Description: SuperTuxKart Racing Game
+# URL: http://supertuxkart.net
+# Depends on: mesa3d xorg-libxrandr
+name=supertuxkart
+version=1.0
+release=1
+source=https://gigenet.dl.sourceforge.net/project/supertuxkart/SuperTuxKart/$version/supertuxkart-$version-linux.tar.xz
+build() {
+    mkdir -p $PKG/opt $PKG/usr/bin
+    cp -r supertuxkart-$version-linux $PKG/opt/supertuxkart
+cat > $PKG/usr/bin/supertuxkart << EOF
+#!/bin/sh
+cd /opt/supertuxkart
+sh run_game.sh
+EOF
+    chmod +x $PKG/usr/bin/supertuxkart
+}

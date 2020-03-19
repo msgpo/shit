@@ -1,0 +1,17 @@
+# Description: Generic Flash Plugin by Adobe
+# URL:         http://www.adobe.com/products/flashplayer/
+# Maintainer:  Mitch Weaver, mitchweaver at protonamil dot com
+# Depends on:  util-linux gtk nss libglvnd xorg-libxdamage xorg-libxt
+
+name=adobe-flash-plugin
+version=32.0.0.207
+release=1
+source=(https://fpdownload.adobe.com/pub/flashplayer/pdc/32.0.0.207/flash_player_ppapi_linux.x86_64.tar.gz)
+
+build() {
+    mkdir -p ${PKG}/usr/lib/adobe-flashplugin
+
+    for i in libpepflashplayer.so manifest.json ; do
+        cp -f $i ${PKG}/usr/lib/adobe-flashplugin/
+    done
+}

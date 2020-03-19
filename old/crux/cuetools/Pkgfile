@@ -1,0 +1,18 @@
+# Description: toolkit for working with cue files
+# URL: http://github.com/svend/cuetools
+# Maintainer: Mitch Weaver, mitchweaver at protonmail do com
+# Depends on: bison flex autoconf automake
+
+name=cuetools
+version=1.4.1
+release=1
+source=(https://github.com/svend/cuetools/archive/${version}.tar.gz)
+
+build() {
+    cd ${name}-${version}
+
+    autoreconf --install
+    ./configure
+    make
+    make DESTDIR=$PKG install
+}

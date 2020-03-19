@@ -1,0 +1,14 @@
+# Description: openjdk - opensource java development kit
+# URL: http://openjdk.java.net
+# Maintainer:  Mitch Weaver, mitchweaver at protonmail dot com
+
+name=openjdk11
+version=11.0.2
+release=1
+source=http://download.java.net/java/GA/jdk11/9/GPL/openjdk-${version}_linux-x64_bin.tar.gz
+
+build() {
+    mkdir -p $PKG/opt
+    cp -r jdk-$version $PKG/opt/openjdk11
+    ln -sf /opt/openjdk11/bin/java /usr/bin/java
+}

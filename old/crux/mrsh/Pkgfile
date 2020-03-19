@@ -1,0 +1,22 @@
+# Description: minimal shell
+# Depends on: xorg-libxext
+
+name=mrsh
+version=git
+release=1
+source=()
+
+build() {
+    cd $PKGMK_SOURCE_DIR
+    if [ -d $name ] ; then
+        rm -rf $name
+    fi
+    git clone http://github.com/emersion/mrsh.git
+    cd $name
+    meson build
+    ninja -C build
+    DESTDIR="$PKG" ninja -C build install
+    cp -f build/libmrsh.so.0.0.0 /usr/lib
+    ln -sf libmrsh.so.0.0.0 /usr/lib/libmrsh.so
+    cp -f build/mrsh /bin/
+}

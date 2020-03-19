@@ -1,0 +1,21 @@
+# Description: lolcat, now without ruby! yay!
+# URL: http://github.com/jaseg/lolcat
+# Maintainer:  Mitch Weaver, mitchweaver at protonmail dot com
+
+name=lolcat
+version=git
+release=1
+source=()
+
+build() {
+    cd $PKGMK_SOURCE_DIR
+    if [ -d $name ] ; then
+        rm -r $name
+    fi
+    git clone https://github.com/jaseg/lolcat
+    cd $name
+    make
+
+    mkdir $PKG/bin
+    make DESTDIR=$PKG/bin install
+}

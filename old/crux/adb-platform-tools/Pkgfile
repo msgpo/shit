@@ -1,0 +1,12 @@
+# Description: adb android platform sdk
+# URL: 
+# Maintainer:  
+name=adb-platform-tools
+version=29.0.5
+release=1
+source=https://dl.google.com/android/repository/platform-tools_r$version-linux.zip
+build() {
+    mkdir -p $PKG/opt $PKG/usr/bin
+    cp -rf platform-tools $PKG/opt/adb-platform-tools
+    ln -sf /opt/adb-platform-tools/adb $PKG/usr/bin/adb
+}

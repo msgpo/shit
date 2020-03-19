@@ -1,0 +1,34 @@
+# Description: OSRS official launcher
+# URL: http://oldschool.runescape.com
+# Depends on: openjdk11 p7zip
+
+name=osrs
+version=1.0
+release=1
+source=()
+
+build() {
+    mkdir -p $PKG/opt/$name $PKG/usr/bin
+    wget -O OldSchool.msi http://runescape.com/downloads/oldschool.msi
+    7z e -o'OldSchool-msi' -y OldSchool.msi
+    7z e -o'rslauncher-cab' -y OldSchool-msi/rslauncher.cab
+    cp -f rslauncher-cab/JagexAppletViewerJarFile* $PKG/opt/$name/jagexappletviewer.jar
+
+cat > $PKG/usr/bin/$name <<'EOF'
+#!/bin/sh
+java \
+    -Djava.class.path='/opt/osrs/jagexappletviewer.jar' \
+    -Dcom.jagex.config='http://oldschool.runescape.com/jav_config.ws' \
+    -Dawt.useSystemAAFontSettings='on' \
+    -Dswing.aatext='true' \
+    -Dhttps.protocols='TLSv1.2' \
+    -Dsun.java2d.opengl='false' \
+    -Dsun.java2d.uiScale='1' \
+    -Dawt.useSystemAAFontSettings='on' \
+    'jagexappletviewer' \
+    'oldschool'
+#--add-opens='java.base/java.lang=ALL-UNNAMED' \
+#--illegal-access='warn' \
+EOF
+chmod +x $PKG/usr/bin/$name
+}

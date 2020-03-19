@@ -1,0 +1,25 @@
+# Description: split large album files into individual songs via a cue file
+# URL: http://github.com/ftrvxmtrx/split2flac
+# Maintainer: Mitch Weaver, mitchweaver at protonmail do com
+# Depends on: bash cuetools flac
+
+name=split2flac
+version=122
+release=1
+source=(https://github.com/ftrvxmtrx/split2flac/archive/${version}.tar.gz)
+
+build() {
+    cd ${name}-${version}
+
+    mkdir -p ${PKG}/usr/bin
+    chmod +x split2flac
+    cp -f split2flac ${PKG}/usr/bin
+
+    # create symbolic links
+    cd ${PKG}/usr/bin
+    ln -s split2flac split2mp3
+    ln -s split2flac split2ogg
+    ln -s split2flac split2opus
+    ln -s split2flac split2m4a
+    ln -s split2flac split2wav
+}

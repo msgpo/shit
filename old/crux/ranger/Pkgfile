@@ -1,0 +1,13 @@
+# Description: the best cmd-line file manager around
+# URL: http://github.com/ranger/ranger
+# Maintainer:  Mitch Weaver, mitchweaver at protonmail dot com
+
+name=ranger
+version=1.9.2
+release=1
+source=(https://github.com/ranger/ranger/archive/v${version}.tar.gz)
+
+build() {
+    cd $name-$version
+    make DESTDIR=$PKG install
+}

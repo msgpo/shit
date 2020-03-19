@@ -1,0 +1,22 @@
+# Description: terminal pixel art editor
+# URL: http://github.com/dylanaraps/pxltrm
+# Maintainer:  Mitch Weaver, mitchweaver at protonmail dot com
+
+name=pxltrm
+version=git
+release=1
+source=()
+
+build() {
+    cd $PKGMK_SOURCE_DIR
+    if [ -d $name ] ; then
+        rm -r $name
+    fi
+
+    git clone https://github.com/dylanaraps/$name
+    cd $name
+    
+    mkdir -p $PKG/usr/bin
+    cp $name $PKG/usr/bin
+    chmod +x $PKG/usr/bin
+}

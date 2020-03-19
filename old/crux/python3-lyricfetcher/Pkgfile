@@ -1,0 +1,18 @@
+# Description: lyricfetcher library for python3
+# URL: https://pypi.org/project/lyricfetcher
+# Maintainer:  Mitch Weaver, mitchweaver at protonmail dot com
+# Depends on: python3 python3-setuptools
+
+name=python3-lyricfetcher
+version=0.5
+release=1
+source=(https://files.pythonhosted.org/packages/4a/62/a98f53cad3a7d541d5a6a9be0c0c8db25ed2e6f00edf178ec7c65e5f014c/lyricfetcher-${version}.tar.gz)
+
+build() {
+    mkdir $PKG/usr
+
+    cd lyricfetcher-$version
+
+    python3 ./setup.py build
+    python3 ./setup.py install --root=$PKG
+}

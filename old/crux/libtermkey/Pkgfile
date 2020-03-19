@@ -1,0 +1,17 @@
+# Description : Easy processing of keyboard entry from terminal programs
+# URL         : http://www.leonerd.org.uk/code/libtermkey
+# Maintainer  : Mitch Weaver, mitchweaver at protonmail dot com
+# Depends on  : unibilium
+
+name=libtermkey
+commit=d9928fdb7c079ab429e4132d6c35ca32f893b66f
+version=14042019
+release=1
+source=("https://github.com/neovim/$name/archive/$commit.tar.gz")
+
+build() {
+    cd $name-$commit
+
+    make
+    make DESTDIR=$PKG PREFIX=/usr install
+}

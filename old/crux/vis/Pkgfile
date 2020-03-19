@@ -1,0 +1,16 @@
+# Description:  a vim like text editor
+# URL:  https://github.com/martanne/vis
+# Maintainer:  Mitch Weaver, mitchweaver at protonmail dot com
+# Depends on: ncurses libtermkey lua-lpeg
+
+name=vis
+version=0.5
+release=2
+source=(https://github.com/martanne/$name/archive/v${version}.tar.gz)
+
+build() {
+    cd $name-$version
+    ./configure --prefix=/usr
+    make
+    make DESTDIR=$PKG PREFIX=/usr MANPREFIX=/usr/share/man install
+}

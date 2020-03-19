@@ -1,0 +1,16 @@
+# Description: print selected rectangular region
+# URL: https://github.com/lolilolicon
+# Maintainer: Mitch Weaver, crux at romster dot me
+
+name=xrectsel
+version=0.3.2
+release=1
+source=(https://github.com/lolilolicon/xrectsel/archive/0.3.2.tar.gz)
+
+build() {
+	cd $name-$version
+    ./bootstrap
+    ./configure
+    make
+    make DESTDIR=$PKG install
+}

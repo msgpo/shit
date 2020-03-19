@@ -1,0 +1,31 @@
+# Description: chromium without google [BINARY]
+# URL: https://github.com/Eloston/ungoogled-chromium
+# Maintainer: Mitch Weaver, mitchweaver at protonmail dot com
+# Depends on: alsa-lib nss cups dbus-glib gperf gtk gtk3 libevent libexif libgcrypt ninja nodejs nss pciutils speech-dispatcher xorg-libxscrnsaver xorg-libxt yasm adobe-flash-plugin
+
+name=ungoogled-chromium
+version=75.0.3770.100-1.2
+release=1
+source=https://github.com/Eloston/$name-binaries/releases/download/$version/${name}_${version}_linux.tar.xz
+
+build() {
+    cd ${name}_${version}_linux
+
+    # create the SUID sandbox
+    mv -f chrome_sandbox chrome-sandbox
+    chmod 4755 chrome-sandbox
+
+    cd ..
+
+    mkdir -p $PKG/opt
+    mv ungoogled-chromium_*_linux $PKG/opt/ungoogled-chromium
+
+    mkdir -p $PKG/usr/bin
+
+cat > $PKG/usr/bin/chromium << EOF
+#!/bin/sh
+/opt/ungoogled-chromium/chrome-wrapper --ppapi-flash-path=/usr/lib/adobe-flashplugin/libpepflashplayer.so
+EOF
+
+    chmod +x $PKG/usr/bin/chromium
+}

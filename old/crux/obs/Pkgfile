@@ -1,0 +1,28 @@
+# Description: obs - OBS Studio
+# URL: https://github.com/obsproject/obs-studio
+# Maintainer:  Mitch Weaver, mitchweaver at protonmail dot com
+# Dependencies: ffmpeg libsndfile libva libvpx libwebp openldap speexd x264 x265 gnutls
+
+name=obs
+version=24.0.3
+release=1
+source=(https://github.com/obsproject/obs-studio/archive/$version.zip)
+
+build() {
+    # unzip obs-studio-$version.zip
+    cd obs-studio-$version
+
+    mkdir -p $PKG/opt/obs
+    mkdir build && cd build
+    cmake -DUNIX_STRUCTURE=0 \
+        -DCMAKE_INSTALL_PREFIX="$PKG/opt/obs" ..
+    make
+    make install
+
+    mkdir -p $PKG/usr/bin
+    cat > $PKG/usr/bin/obs << "EOF"
+#!/bin/sh
+cd /opt/obs/bin/64bit
+./obs
+EOF
+}

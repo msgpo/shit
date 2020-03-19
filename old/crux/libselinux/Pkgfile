@@ -1,0 +1,13 @@
+# Description: libselinux
+# URL: 
+# Maintainer:  
+# Depends on: libsepol
+name=libselinux
+version=3.0
+release=1
+source=https://github.com/SELinuxProject/selinux/releases/download/20191204/libselinux-3.0.tar.gz
+build() {
+    cd libselinux-3.0
+    make
+    make DESTDIR=$PKG install
+}

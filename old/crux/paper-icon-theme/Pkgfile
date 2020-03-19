@@ -1,0 +1,15 @@
+# Description: paper icon theme
+# URL: https://github.com/snwh/paper-icon-theme
+# Maintainer:  Mitch Weaver, mitchweaver at protonmail dot com
+# Depends on: gtk3 gtk meson ninja
+
+name=paper-icon-theme
+version=v.1.5.0
+release=1
+source=(https://github.com/snwh/paper-icon-theme/archive/${version}.tar.gz)
+
+build() {
+    cd $name-$version
+    meson "build" --prefix=$PKG/usr
+    ninja -C  "build" install
+}

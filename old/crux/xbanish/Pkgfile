@@ -1,0 +1,14 @@
+# Description: hides your cursor when not in use
+# URL: http://github.com/jcs/xbanish
+# Maintainer: Mitch Weaver, mitchweaver at protonmail dot com
+
+name=xbanish
+version=1.6
+release=1
+source=(https://github.com/jcs/xbanish/archive/v${version}.tar.gz)
+
+build() {
+	cd $name-$version
+    make
+    make DESTDIR=$PKG install
+}

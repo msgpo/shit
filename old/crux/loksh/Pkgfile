@@ -1,0 +1,17 @@
+# Description: Linux port of OpenBSD ksh
+# URL: https://github.com/dimkr/loksh
+# Maintainer:  Mitch Weaver, mitchweaver at protonmail dot com
+# Depends on: readline
+
+name=loksh
+version=6.6
+release=1
+source=(https://github.com/dimkr/$name/archive/$version.tar.gz)
+
+build() {
+    cd $name-$version
+    make -j${NPROC}
+    install -v -D -m 755 ksh $PKG/bin/$name
+    install -v -D -m 755 ksh.1 $PKG/usr/share/man/man.1/${name}.1
+    ln -sf /bin/loksh $PKG/bin/ksh
+}

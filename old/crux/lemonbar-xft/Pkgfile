@@ -1,0 +1,20 @@
+# Description: lemonbar with xft-support
+# URL: https://github.com/krypt-n/bar     
+# Maintainer:  Mitch Weaver, mitchweaver at protonmail dot com
+# Dependencies: unzip
+
+name=lemonbar-xft
+version=1.0
+release=1
+source=(https://codeload.github.com/krypt-n/bar/zip/xft-port)
+
+build() {
+    unzip xft-port
+    cd bar-xft-port
+
+    # rename to avoid confusion with other common scripts
+    sed -i 's/\/bar/\/lemonbar/g' Makefile 
+
+    make
+    make DESTDIR=$PKG install
+}

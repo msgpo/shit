@@ -1,0 +1,10 @@
+# Description: Free Multiplayer FPS
+# URL: http://krunker.io
+# Maintainer:  
+name=krunker
+version=1.0
+release=1
+source=https://client2.krunker.io/setup.AppImage
+build() {
+    install -D -m 0755 setup.AppImage $PKG/bin/krunker
+}

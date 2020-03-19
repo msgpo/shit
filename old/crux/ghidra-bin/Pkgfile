@@ -1,0 +1,15 @@
+# Description: Reverse engineering tool (binary)
+# URL: http://ghidra-sre.org
+# Maintainer:  Mitch Weaver at protonmail dot com
+# Depends on: openjdk11
+
+name=ghidra-bin
+version=9.0.4+20190516
+release=1
+source=http://ghidra-sre.org/${name%-bin}_${version%+*}_PUBLIC_${version#*+}.zip
+
+build() {
+    mkdir $PKG/opt
+    cp -r ${name%-bin}_${version%+*} $PKG/opt/ghidra
+    ln -sf /opt/ghidra/ghidraRun /usr/bin/ghidra
+}

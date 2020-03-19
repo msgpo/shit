@@ -1,0 +1,14 @@
+# Description: widevine plugin for google chrome
+# URL: http://www.widevine.com/
+# Maintainer: Mitch Weaver, mitchweaver at protonmail dot com
+
+name=chromium-widevine
+version=current
+release=1
+source=(https://dl.google.com/linux/direct/google-chrome-stable_${version}_amd64.deb)
+
+build() {
+  ar x google-chrome-stable_${version}_amd64.deb
+  bsdtar -xf data.tar.xz opt/google/chrome/libwidevinecdm.so
+  install -Dm644 opt/google/chrome/libwidevinecdm.so -t $PKG/usr/lib/chromium/
+}

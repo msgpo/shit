@@ -1,0 +1,15 @@
+# Description: dropbox 64 bit binary
+# URL: http://dropbox.com
+# Maintainer:
+
+name=dropbox
+version=1.0
+release=1
+source=(https://dropbox.com/download?plat=lnx.x86_64)
+
+build() {
+    mkdir -p $PKG/opt $PKG/usr/bin
+    tar xzf download?*
+    cp -rf .dropbox-dist $PKG/opt/dropbox
+    ln -sf /opt/dropbox/dropboxd /usr/bin/dropbox
+}

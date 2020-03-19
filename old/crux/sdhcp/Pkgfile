@@ -1,0 +1,20 @@
+# Description: simple dhcp client
+# URL: http://core.suckless.org/sdhcp
+# Maintainer: Mitch Weaver, crux at romster dot me
+
+name=sdhcp
+version=git
+release=1
+source=()
+
+build() {
+	cd $PKGMK_SOURCE_DIR
+    if [ -d $name ] ; then
+        rm -r $name
+    fi
+	git clone git://git.2f30.org/sdhcp.git
+	cd sdhcp
+    mkdir -p $PKG/sbin
+	make
+	make DESTDIR=$PKG PREFIX=/ MANPREFIX=/usr/share/man install
+}

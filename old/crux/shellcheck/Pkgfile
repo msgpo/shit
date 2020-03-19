@@ -1,0 +1,15 @@
+# Description: check shell scripts for errors/warnings
+# URL: shellcheck.net
+# Maintainer: Mitch Weaver, mitchweaver at protonmail dot com
+
+name=shellcheck
+version=0.6.0
+release=1
+source=(https://github.com/koalaman/$name/archive/v$version.tar.gz)
+Depends on: haskell-cabal-install
+
+build() {
+	cd $name-$version
+    cabal update
+    cabal --prefix=$PKG install
+}

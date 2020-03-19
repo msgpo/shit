@@ -1,0 +1,24 @@
+# Description: java integrated development environment
+# URL: http://jetbrains.com/
+# Maintainer:  Mitch Weaver at protonmail dot com
+# Depends on: gtk-engine-murrine
+
+name=intellij
+version=2019.3.1
+release=1
+source=(https://download-cf.jetbrains.com/idea/ideaIC-$version.tar.gz)
+
+build() {
+    mkdir -p $PKG/opt $PKG/usr/bin
+    mv idea-I* $PKG/opt/intellij
+
+cat > $PKG/usr/bin/intellij << "EOF"
+#!/bin/sh
+export _JAVA_AWT_WM_NONREPARENTING=1
+cd /opt/intellij/bin
+./idea.sh
+EOF
+
+chmod +x $PKG/usr/bin/intellij
+
+}

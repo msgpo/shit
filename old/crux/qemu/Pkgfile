@@ -1,0 +1,30 @@
+# Description: Fast CPU emulator and virtualizer for the x86 platform
+# URL:         http://www.qemu-project.org/
+# Maintainer:  Thomas Penteker, tek at serverop dot de
+# Depends on:  libsdl glib xorg-libpixman
+# Optional:    libseccomp libiscsi libusb usbredir spice
+ 
+name=qemu
+version=4.0.0
+release=1
+source=(http://wiki.qemu-project.org/download/qemu-$version.tar.bz2)
+
+build() {
+    cd $name-$version
+
+    ./configure --disable-docs
+
+    # fix include issues with libcap
+    sed -i -e '/#include "qemu\/xattr.h"/d' \
+            -e 's|#include <sys/resource.h>|#include <sys/resource.h>\r\n#include "qemu\/xattr.h"|g' \
+    fsdev/virtfs-proxy-helper.c
+
+    make
+    make DESTDIR=$PKG PREFIX=/usr install
+
+    install -d $PKG/etc/udev/rules.d/
+    echo 'KERNEL=="kvm", NAME="kvm", OWNER="root", GROUP="kvm", MODE="0660"' > \
+    $PKG/etc/udev/rules.d/60-kvm.rules
+
+    rm -rf $PKG/usr/share/locale
+}

@@ -1,0 +1,14 @@
+# Description: run swf flash files locally
+# URL:         http://www.adobe.com/products/flashplayer/
+# Maintainer:  Mitch Weaver, mitchweaver at protonamil dot com
+# Depends on:  adobe-flash-plugin
+
+name=adobe-flash-projector
+version=32
+release=1
+source=(https://fpdownload.macromedia.com/pub/flashplayer/updaters/${version}/flash_player_sa_linux.x86_64.tar.gz)
+
+build() {
+    mkdir -p ${PKG}/usr/bin
+    cp ./flashplayer ${PKG}/usr/bin/adobe-flash-projector
+}

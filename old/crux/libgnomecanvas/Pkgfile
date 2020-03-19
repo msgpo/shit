@@ -1,0 +1,16 @@
+# Description: gnome canvas
+# URL: https://gnome.org
+
+name=libgnomecanvas
+version=2.30.3
+release=1
+source=(https://download.gnome.org/sources/libgnomecanvas/2.30/libgnomecanvas-2.30.3.tar.bz2)
+
+build() {
+  cd $name-$version 
+  ./configure
+  make
+  make DESTDIR=$PKG prefix=/usr install
+  cd /usr/include
+  ln -sf libgnomecanvas-2.0/libgnomecanvas
+}

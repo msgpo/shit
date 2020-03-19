@@ -1,0 +1,22 @@
+# Description: suckless core-utils, in busybox form
+# URL: http://suckless.org/core/sbase
+# Maintainer: Mitch Weaver, mitchweaver at protonmail dot com
+
+name=sbase-box
+version=git
+release=1
+source=()
+build() {
+    cd $PKGMK_SOURCE_DIR
+    if [ -d sbase ] ; then
+        rm -r sbase
+    fi
+    git clone git://git.suckless.org/sbase
+    cd sbase
+
+    mkdir -p $PKG/usr/bin
+    make CFLAGS="$CFLAGS -static" \
+         LDFLAGS="$LDFLAGS -static" \
+         sbase-box
+    cp -f sbase-box $PKG/usr/bin
+}

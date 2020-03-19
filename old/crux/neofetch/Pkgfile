@@ -1,0 +1,16 @@
+# Description: cmd-line OS information viewer
+# URL: http://github.com/dylanaraps/neofetch
+# Maintainer:  Mitch Weaver, mitchweaver at protonmail dot com
+
+name=neofetch
+version=git
+release=1
+source=()
+
+build() {
+    cd $PKGMK_SOURCE_DIR
+    [ -d $name ] && rm -rf ${name:?}
+    git clone http://github.com/dylanaraps/neofetch
+    cd $name
+    make DESTDIR=$PKG install
+}

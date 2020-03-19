@@ -1,0 +1,19 @@
+# Description: Perl Build module
+# URL: http://metacpan.org/pod/Module::Build
+# Maintainer:  Mitch Weaver, mitchweaver at protonmail dot com
+
+name=p5-build
+version=0.4224
+release=1
+source=(https://cpan.metacpan.org/authors/id/L/LE/LEONT/Module-Build-$version.tar.gz)
+
+build() {
+    cd Module-Build-$version
+
+    perl Makefile.PL
+    make OPTIMIZE="$CFLAGS" DESTDIR="$PKG" install
+
+    find "$PKG" -depth \
+        -type f \( -name .packlist -o -name \*.bs -o -name autosplit.ix -o -name perllocal.pod \) -delete , \
+        -type d -empty -exec rmdir {} +
+}

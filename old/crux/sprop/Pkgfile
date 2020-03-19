@@ -1,0 +1,14 @@
+# Description: sprop simple x property utility
+# URL: http://suckless.org/x/sprop
+# Maintainer:  Mitch Weaver, mitchweaver at protonmail dot com
+
+name=sprop
+version=0.1
+release=1
+source=(http://dl.suckless.org/tools/sprop-0.1.tar.gz)
+
+build() {
+  cd $name-$version # github is a pain
+  make
+  make DESTDIR=$PKG install
+}

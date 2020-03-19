@@ -1,0 +1,24 @@
+# Description: arc flatabulous theme
+# URL: http://github.com/andreisergiu98/arc-flatabulous-theme
+# Maintainer:  Mitch Weaver, mitchweaver at protonmail dot com
+# Depends on: gtk-engine-murrine sassc autoconf gtk3 git
+
+name=arc-flatabulous-theme
+version=20180201
+release=1
+source=(https://github.com/andreisergiu98/arc-flatabulous-theme/archive/${version}.tar.gz)
+
+build() {
+    cd $name-$version
+    ./autogen.sh \
+        --prefix $PKG/usr \
+        --disable-cinnamon \
+        --disable-gnome-shell \
+        --disable-metacity \
+        --disable-unity \
+        --disable-xfwm \
+        --disable-plank \
+        --with-gnome=3.22
+
+    make DESTDIR=$PKG install
+}

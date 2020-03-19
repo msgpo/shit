@@ -1,0 +1,8 @@
+etc
+etc/*
+*kernel*config*
+
+*footprint*
+*signature*
+*md5sum*
+*~*

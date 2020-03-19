@@ -1,0 +1,14 @@
+# Description: swarp simple x mouse pointer warper
+# URL: http://suckless.org/x/swarp
+# Maintainer:  Mitch Weaver, mitchweaver at protonmail dot com
+
+name=swarp
+version=0.1
+release=1
+source=(http://dl.suckless.org/tools/swarp-$version.tar.gz)
+
+build() {
+  cd $name-$version
+  make
+  make DESTDIR=$PKG install
+}

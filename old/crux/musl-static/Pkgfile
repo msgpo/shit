@@ -1,0 +1,24 @@
+# Description: musl libc, with --disable-shared
+# URL: http://www.musl-libc.org
+# Maintainer: mitch weaver
+
+name=musl-static
+version=1.1.22
+release=1
+source=(http://www.musl-libc.org/releases/musl-$version.tar.gz)
+
+current() {
+  curl -s http://www.musl-libc.org/download.html |
+    sed -n 's/^.*Mainline - \(.*\)<\/h3>$/\1/ p'
+}
+
+build() {
+    cd musl-$version
+    ./configure --prefix=/usr/musl --exec-prefix=/usr/musl \
+        --disable-shared
+    make
+    make DESTDIR=$PKG install
+    install -d -m 0755 $PKG/usr/bin
+    cd $PKG/usr/bin
+    ln -s /usr/musl/bin/musl-gcc
+}

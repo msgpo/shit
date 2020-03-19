@@ -1,0 +1,15 @@
+# Description: a simple presentation tool
+# URL: http://tools.suckless.org/sent
+# Maintainer: Mitch Weaver, mitchweaver at protonmail dot com
+# Depends on: xorg-libxft
+
+name=sent
+version=1
+release=1
+source=(https://dl.suckless.org/tools/${name}-${version}.tar.gz)
+
+build() {
+    mkdir -p $PKG/usr
+    make
+    make PREFIX=$PKG/usr install
+}

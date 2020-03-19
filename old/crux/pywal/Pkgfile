@@ -1,0 +1,17 @@
+# Description: autogenerates colorschemes with given images
+# URL: http://github.com/dylanaraps/pywal
+# Maintainer:  Mitch Weaver, mitchweaver at protonmail dot com
+# Depends on: python3 imagemagick feh
+
+name=pywal
+version=3.3.0
+release=1
+source=(https://github.com/dylanaraps/pywal/archive/${version}.tar.gz)
+
+build() {
+    mkdir $PKG/usr
+    cd $name-$version
+    rm -r tests
+    python3 ./setup.py build
+    python3 ./setup.py install --root=$PKG
+}

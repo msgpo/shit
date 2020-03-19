@@ -1,0 +1,22 @@
+# Description : libmpack lua bindings
+# URL         : https://github.com/libmpack/libmpack-lua
+# Maintainer  : Mitch Weaver, mitchweaver at protonmail dot com
+# Depends on  : lua lua51
+
+name=libmpack-lua
+version=1.0.7
+release=1
+source=("https://github.com/${name%-*}/$name/archive/$version.tar.gz")
+
+build() {
+    cd "$name-$version"
+
+    make
+    make -C mpack-src
+
+    for i in 5.{1..3}; do
+        gcc -O2 -fPIC "-I/usr/include/lua$i" -c lmpack.c -o lmpack.o
+        gcc -shared -o "mpack.so.$i" lmpack.o
+        install -Dm755 "mpack.so.$i" "$PKG/usr/lib/lua/$i/mpack.so"
+    done
+}

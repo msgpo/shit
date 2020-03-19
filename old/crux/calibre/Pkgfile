@@ -1,0 +1,13 @@
+# Description: calibre ebook reader and converter
+# URL: http://calibre-ebook.com
+# Maintainer:  
+name=calibre
+version=4.8.0
+release=1
+source=(https://download.calibre-ebook.com/$version/$name-$version-x86_64.txz)
+build() {
+    mkdir -p $PKG/opt/$name
+    cp -rf * $PKG/opt/$name/
+
+    >&2 echo "*** REMEMBER TO PERFORM /opt/calibre/calibre_postinstall! ***"
+}

@@ -1,0 +1,14 @@
+# Description: openjdk - opensource java development kit
+# URL: http://openjdk.java.net
+# Maintainer:  Mitch Weaver, mitchweaver at protonmail dot com
+
+name=openjdk8
+version=1.8.0_192
+release=1
+source=(https://download.java.net/java/jdk8u192/archive/b04/binaries/jdk-8u192-ea-bin-b04-linux-x64-01_aug_2018.tar.gz)
+
+build() {
+    mkdir $PKG/opt $PKG/bin
+    cp -rf jdk$version $PKG/opt/openjdk
+    ln -sf /opt/openjdk/bin/java $PKG/bin/java
+}

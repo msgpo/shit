@@ -1,0 +1,28 @@
+# Description: RuneLite OSRS launcher
+# URL: https://runelite.net
+# Depends on: openjdk11
+
+name=runelite
+version=2.1.0
+release=1
+source=(https://github.com/runelite/launcher/releases/download/$version/RuneLite.jar)
+
+build() {
+    mkdir -p $PKG/opt/runelite  $PKG/usr/bin
+    cp RuneLite.jar $PKG/opt/runelite
+
+
+# create helper script for convenience
+cat > $PKG/opt/runelite/runelite.sh <<EOF
+#!/bin/sh
+export _JAVA_AWT_WM_NONREPARENTING=1
+java \\
+-Duser.home='/home/mitch/rs/runelite_home' \\
+-Dswing.aatext='true' \\
+-Dawt.useSystemAAFontSettings='on' \\
+-jar /opt/runelite/RuneLite.jar --mode=OFF
+EOF
+
+    chmod +x $PKG/opt/runelite/runelite.sh
+    ln -s /opt/runelite/runelite.sh $PKG/usr/bin/runelite
+}

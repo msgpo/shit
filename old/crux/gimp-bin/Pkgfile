@@ -1,0 +1,11 @@
+# Description: GIMP - binary
+# URL: http://gimp.org
+# Maintainer:  
+# Depends on: gegl,glib-networking,gtk,libart_lgpl,mypaint-brushes,poppler-data,poppler-glib,xorg-libxmu,xorg-libxpm
+name=gimp-bin
+version=2.10.15-20191219
+release=1
+source=https://github.com/aferrero2707/gimp-appimage/releases/download/continuous/GIMP_AppImage-git-$version-withplugins-x86_64.AppImage
+build() {
+    install -D -m 0755 GIMP_AppImage-git-$version-withplugins-x86_64.AppImage $PKG/bin/gimp
+}
