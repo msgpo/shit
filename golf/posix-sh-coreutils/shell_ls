@@ -1,0 +1,12 @@
+#!/bin/sh
+#
+# http://github.com/mitchweaver/bin
+#
+# ls in posix sh
+#
+
+printf '%s\n' "${1:-.}"/* | \
+while read -r line ; do
+    printf '%s ' "${line##*/}"
+done
+echo
