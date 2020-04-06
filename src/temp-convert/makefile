@@ -2,7 +2,7 @@ PREFIX = ${HOME}/.local
 CFLAGS = -std=c99 -pedantic -O2 -fstack-protector-strong -pipe
 CC = cc
 
-$(NAME): 
+all: 
 	$(CC) $(CFLAGS) FtoC.c -o FtoC
 	$(CC) $(CFLAGS) CtoF.c -o CtoF
 

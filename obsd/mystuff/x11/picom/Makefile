@@ -21,7 +21,7 @@ WANTLIB += Xrender c m pthread
 
 PERMIT_PACKAGE=	Yes
 
-BUILD_DEPENDS += devel/uthash devel/libev devel/pcre x11/libxdg-basedir
+BUILD_DEPENDS += devel/meson devel/uthash devel/libev devel/pcre x11/libxdg-basedir
 RUN_DEPENDS   += devel/libconfig
 
 do-build:

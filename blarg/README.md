@@ -1,9 +1,5 @@
 # blarg
 
-posts salvaged from my old blog, maybe it'll be a thing again some day
+scraps salvaged from old blog
 
 totally unorganized, and of varying quality
-
----
-
-hey you, yes you reading this, you're cool.
