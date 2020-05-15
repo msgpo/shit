@@ -3,9 +3,9 @@
 # Maintainer:  Mitch Weaver, mitchweaver at protonmail dot com
 
 name=openjdk11
-version=11.0.2
+version=11.0.5
 release=1
-source=http://download.java.net/java/GA/jdk11/9/GPL/openjdk-${version}_linux-x64_bin.tar.gz
+source=http://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.5_linux-x64_bin.tar.gz
 
 build() {
     mkdir -p $PKG/opt
